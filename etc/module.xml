@@ -1,4 +1,5 @@
-<?php
+<?xml version="1.0"?>
+<!--
 /**
  * MageINIC
  * Copyright (C) 2023 MageINIC <support@mageinic.com>
@@ -22,10 +23,13 @@
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
-use Magento\Framework\Component\ComponentRegistrar;
-
-ComponentRegistrar::register(
-    ComponentRegistrar::MODULE,
-    'MageINIC_NewsletterPopup',
-    __DIR__
-);
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="MageINIC_NewsletterPopup" setup_version="1.0.0">
+        <sequence>
+            <module name="MageINIC_Core"/>
+            <module name="Magento_Newsletter"/>
+        </sequence>
+    </module>
+</config>

@@ -1,7 +1,7 @@
 <?php
 /**
  * MageINIC
- * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ * Copyright (C) 2023. MageINIC <support@mageinic.com>
  *
  * NOTICE OF LICENSE
  *
@@ -17,15 +17,19 @@
  * version in the future.
  *
  * @category MageINIC
- * @package MageINIC_NewsletterPopup
- * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @package MageINIC_<ModuleName>
+ * @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
-use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(
-    ComponentRegistrar::MODULE,
-    'MageINIC_NewsletterPopup',
-    __DIR__
-);
+/**
+ * @var \MageINIC\NewsletterPopup\Block\NewsletterPopup $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$offerUrl = $block->getOfferUrl();
+$offerImage = $block->getOfferImage() ? $block->getOfferImageUrl() : $block->getDefaultOfferImage();
+?>
+<a href="<?= $escaper->escapeUrl($offerUrl); ?>">
+    <img alt="offer-popup-image" src="<?= $escaper->escapeUrl($offerImage); ?>"/>
+</a>

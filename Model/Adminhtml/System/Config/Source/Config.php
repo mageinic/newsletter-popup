@@ -1,7 +1,7 @@
 <?php
 /**
  * MageINIC
- * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ * Copyright (C) 2023. MageINIC <support@mageinic.com>
  *
  * NOTICE OF LICENSE
  *
@@ -17,15 +17,29 @@
  * version in the future.
  *
  * @category MageINIC
- * @package MageINIC_NewsletterPopup
- * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @package MageINIC_<ModuleName>
+ * @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
-use Magento\Framework\Component\ComponentRegistrar;
+namespace MageINIC\NewsletterPopup\Model\Adminhtml\System\Config\Source;
 
-ComponentRegistrar::register(
-    ComponentRegistrar::MODULE,
-    'MageINIC_NewsletterPopup',
-    __DIR__
-);
+use Magento\Framework\Data\OptionSourceInterface;
+
+/**
+ * Pop Type Config
+ */
+class Config implements OptionSourceInterface
+{
+    /**
+     * @inheritdoc
+     */
+    public function toOptionArray(): array
+    {
+        return [
+            ['value' => 0, 'label' => __('Disable')],
+            ['value' => 1, 'label' => __('Offer Popup')],
+            ['value' => 2, 'label' => __('Newsletter Popup')]
+        ];
+    }
+}
