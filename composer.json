@@ -10,9 +10,7 @@
     "type": "magento2-module",
     "keywords": ["mageinic", "Newsletter Popup", "Newsletter", "magento 2"],
     "homepage": "https://github.com/mageinic",
-    "license": [
-        "Commercial"
-    ],
+    "license": "MIT",
     "authors": [
         {
             "name": "MageINIC",
