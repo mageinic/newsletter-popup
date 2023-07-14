@@ -22,10 +22,7 @@
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
+
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(
-    ComponentRegistrar::MODULE,
-    'MageINIC_NewsletterPopup',
-    __DIR__
-);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'MageINIC_NewsletterPopup', __DIR__);

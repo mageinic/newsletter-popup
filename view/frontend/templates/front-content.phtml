@@ -17,54 +17,52 @@
  * version in the future.
  *
  * @category MageINIC
- * @package MageINIC_<ModuleName>
+ * @package MageINIC_NewsletterPopup
  * @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
- */
-
-/**
- * @var NewsletterPopup $block
- * @var Escaper $escaper
- * @var
  */
 
 use MageINIC\NewsletterPopup\Block\NewsletterPopup;
 use Magento\Cms\Block\BlockByIdentifier;
 use Magento\Framework\Escaper;
 
+/**
+ * @var NewsletterPopup $block
+ * @var Escaper $escaper
+ */
 $popSelect = $block->getPopUpSelect();
 $popDisplay = $block->getDisplayTime();
 $offerUrl = $block->getOfferUrl();
 ?>
 <?php if ($popSelect): ?>
-    <div id="popup-modal" style="display: none;">
-        <div class="main-news-popup">
+    <div id="mageinic-popup-modal" class="mageinic-popup-modal"  style="display: none;">
+        <div class="main-popup-content">
             <?php if ($popSelect == '2'): ?>
                 <div class="promo-content">
                     <?= $block->getLayout()->createBlock(BlockByIdentifier::class)
-                        ->setIdentifier('newsletter-popup-content')->toHtml(); ?>
+                        ->setIdentifier('newsletter-popup-content')->toHtml() ?>
                 </div>
-                <div class="news-form">
-                <?= $block->getLayout()->createBlock(BlockByIdentifier::class)
-                    ->setIdentifier('front-content-form')->toHtml(); ?>
+                <div class="newsletter-form">
+                    <?= $block->getLayout()->createBlock(BlockByIdentifier::class)
+                        ->setIdentifier('front-content-form')->toHtml() ?>
                 </div>
             <?php endif; ?>
             <?php if ($popSelect == '1'): ?>
-                <div class="offer-pop-content">
+                <div class="offer-popup-content">
                     <?= $block->getLayout()->createBlock(BlockByIdentifier::class)
-                        ->setIdentifier('offer-popup')->toHtml(); ?>
+                        ->setIdentifier('offer-popup')->toHtml() ?>
                 </div>
             <?php endif; ?>
         </div>
     </div>
     <script type="text/x-magento-init">
         {
-            "*": {
+            "#mageinic-popup-modal": {
                 "MageINIC_NewsletterPopup/js/cookie_hours": {
-                    "hours":"<?= $escaper->escapeHtml($popDisplay); ?>"
+                    "hours":"<?= $escaper->escapeJs($popDisplay) ?>"
                 }
             }
         }
     </script>
-<?php endif;?>
+<?php endif; ?>

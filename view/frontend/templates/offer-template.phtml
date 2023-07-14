@@ -17,19 +17,22 @@
  * version in the future.
  *
  * @category MageINIC
- * @package MageINIC_<ModuleName>
+ * @package MageINIC_NewsletterPopup
  * @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
 
+use MageINIC\NewsletterPopup\Block\NewsletterPopup;
+use Magento\Framework\Escaper;
+
 /**
- * @var \MageINIC\NewsletterPopup\Block\NewsletterPopup $block
- * @var \Magento\Framework\Escaper $escaper
+ * @var NewsletterPopup $block
+ * @var Escaper $escaper
  */
 $offerUrl = $block->getOfferUrl();
-$offerImage = $block->getOfferImage() ? $block->getOfferImageUrl() : $block->getDefaultOfferImage();
+$offerImage = $block->getOfferImageUrl();
 ?>
-<a href="<?= $escaper->escapeUrl($offerUrl); ?>">
-    <img alt="offer-popup-image" src="<?= $escaper->escapeUrl($offerImage); ?>"/>
+<a href="<?= $escaper->escapeUrl($offerUrl) ?>">
+    <img alt="offer-popup-image" src="<?= $escaper->escapeUrl($offerImage) ?>"/>
 </a>

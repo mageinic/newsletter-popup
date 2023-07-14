@@ -17,15 +17,16 @@
  * version in the future.
  *
  * @category MageINIC
- * @package MageINIC_<ModuleName>
+ * @package MageINIC_NewsletterPopup
  * @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
+
 namespace MageINIC\NewsletterPopup\Block\System\Config;
 
-use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Config\Block\System\Config\Form\Field;
+use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
  * Block NewsletterPopup Info for system notice
@@ -40,10 +41,11 @@ class NewsletterPopupInfo extends Field
         $html = '<div class="notices-wrapper">';
         $html .= '<div class="messages">';
         $html .= '<div class="message" style="margin-top: 10px;">';
-        $html .= '<strong>' . ('To add Content in Newsletter popup static block.') . '</strong><br />';
-        $html .= 'Go To Content (Main Admin Tab) -> Blocks(Elements)' . '<br />';
-        $html .= '<strong>' . 'Search Identifier -> "newsletter-popup-content"' . '</strong><br />';
-        $html .= 'You can manage html static content here.';
+        $html .= '<strong>' . __("To add Content in Newsletter popup static block.") . '</strong><br />';
+        $html .= __("Go To Content (Main Admin Tab)") . ' -> ' . __("Blocks(Elements)") . '<br />';
+        $html .= '<strong>' . __("Search Identifier") . ' -> ' . __("'newsletter-popup-content'")
+            . '</strong><br />';
+        $html .= __("You can manage html static content here.");
         $html .= '</div>';
         $html .= '</div>';
         $html .= '</div>';

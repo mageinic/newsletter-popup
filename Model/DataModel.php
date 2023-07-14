@@ -17,11 +17,12 @@
  * version in the future.
  *
  * @category MageINIC
- * @package MageINIC_<ModuleName>
+ * @package MageINIC_NewsletterPopup
  * @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
+
 namespace MageINIC\NewsletterPopup\Model;
 
 use Magento\Customer\Helper\View;

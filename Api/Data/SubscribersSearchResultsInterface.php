@@ -1,3 +1,4 @@
+<?php
 /**
  * MageINIC
  * Copyright (C) 2023 MageINIC <support@mageinic.com>
@@ -22,30 +23,26 @@
  * @author MageINIC <support@mageinic.com>
  */
 
-& when (@media-common = true) {
-    .modals-wrapper {
-        .modal-popup {
-            &.newsletter-popup {
-                .modal-inner-wrap {
-                    left: 50%;
-                    margin: 0;
-                    max-width: 700px;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
+namespace MageINIC\NewsletterPopup\Api\Data;
 
-                    .mageinic-popup-modal {
-                        .main-popup-content {
-                            .promo-content {
-                                font-size: 25px;
-                                font-weight: bold;
-                                margin-bottom: 20px;
-                                text-align: center;
-                                text-transform: capitalize;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+/**
+ * Interface SubscribersSearchResultsInterface
+ * @api
+ */
+interface SubscribersSearchResultsInterface
+{
+    /**
+     * Retrieve subscribers list.
+     *
+     * @return \MageINIC\NewsletterPopup\Api\Data\SubscriberInterface[]
+     */
+    public function getItems();
+
+    /**
+     * Set subscribers list.
+     *
+     * @param \MageINIC\NewsletterPopup\Api\Data\SubscriberInterface[] $subscribers
+     * @return $this
+     */
+    public function setItems(array $subscribers): SubscribersSearchResultsInterface;
 }

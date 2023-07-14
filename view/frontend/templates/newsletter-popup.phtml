@@ -17,38 +17,34 @@
  * version in the future.
  *
  * @category MageINIC
- * @package MageINIC_<ModuleName>
+ * @package MageINIC_NewsletterPopup
  * @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
 
+use MageINIC\NewsletterPopup\Block\NewsletterPopup;
+use Magento\Framework\Escaper;
+
 /**
  * @var NewsletterPopup $block
  * @var Escaper $escaper
- * @var SecureHtmlRenderer $secureRenderer
  */
-
-use MageINIC\NewsletterPopup\Block\NewsletterPopup;
-use Magento\Framework\Escaper;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-
 $popSelect = $block->getPopUpSelect();
 ?>
 <?php if ($popSelect): ?>
     <div class="coders_success success message" style="display: none !important"></div>
     <div class="coders_error error message" style="display: none !important"></div>
-    <form class="form newsletter-popup"
-          id="newsletter-popup"
-          data-hasrequired="<?= $escaper->escapeHtmlAttr(__('* Required Fields')) ?>"
+    <form class="form newsletter-popup" id="newsletter-popup"
+          data-hasrequired="<?= $escaper->escapeHtmlAttr(__("* Required Fields")) ?>"
           data-mage-init='{"validation":{}}'>
         <fieldset class="fieldset">
             <div class="field email required">
                 <label class="label" for="email">
-                    <span><?= $escaper->escapeHtml(__('Email')) ?></span>
+                    <span><?= $escaper->escapeHtml(__("Email")) ?></span>
                 </label>
                 <div class="control">
-                    <input name="email" id="customer-email" title="<?= $escaper->escapeHtmlAttr(__('Email')) ?>"
+                    <input name="email" id="customer-email" title="<?= $escaper->escapeHtmlAttr(__("Email")) ?>"
                            value="<?= $escaper->escapeHtmlAttr($block->getUserEmail()) ?>"
                            class="input-text" type="email"
                            data-validate="{required:true, 'validate-email':true}"/>
@@ -59,8 +55,8 @@ $popSelect = $block->getPopUpSelect();
         <div class="actions-toolbar">
             <div class="primary">
                 <button type="button" class="action submit primary"
-                        title="<?= $escaper->escapeHtmlAttr(__('Subscribe')) ?>">
-                    <span><?= $escaper->escapeHtml(__('Subscribe')) ?></span>
+                        title="<?= $escaper->escapeHtmlAttr(__("Subscribe")) ?>">
+                    <span><?= $escaper->escapeHtml(__("Subscribe")) ?></span>
                 </button>
             </div>
         </div>
@@ -69,7 +65,7 @@ $popSelect = $block->getPopUpSelect();
         {
             "#newsletter-popup": {
                 "MageINIC_NewsletterPopup/js/ajax_response": {
-                    "url":"<?= $escaper->escapeUrl($block->getFormAction()) ?>"
+                    "url":"<?= $escaper->escapeJs($block->getFormAction()) ?>"
                 }
             }
         }

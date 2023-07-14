@@ -1,0 +1,44 @@
+"Enable Newsletter Subscription for Guest user Navigate to ","Enable Newsletter Subscription for Guest user Navigate to "
+Stores,Stores
+Configuration,Configuration
+Customer,Customer
+Newsletter,Newsletter
+"Subscription Options","Subscription Options"
+"Allow Guest Subscription","Allow Guest Subscription"
+"To add Content in Newsletter popup static block.","To add Content in Newsletter popup static block."
+"Go To Content (Main Admin Tab)","Go To Content (Main Admin Tab)"
+Blocks(Elements),Blocks(Elements)
+"Search Identifier","Search Identifier"
+'newsletter-popup-content','newsletter-popup-content'
+"You can manage html static content here.","You can manage html static content here."
+"To add Content in offer popup static block.","To add Content in offer popup static block."
+'offer-popup','offer-popup'
+"You can manage html content here.","You can manage html content here."
+"This email address is already subscribed.","This email address is already subscribed."
+"Please enter a valid email address (Ex: johndoe@domain.com).","Please enter a valid email address (Ex: johndoe@domain.com)."
+"Thank you for your subscription.","Thank you for your subscription."
+"Disable Popup","Disable Popup"
+"Offer Popup","Offer Popup"
+"Newsletter Popup","Newsletter Popup"
+"This is an invalid subscription confirmation code.","This is an invalid subscription confirmation code."
+"This is an invalid subscription ID.","This is an invalid subscription ID."
+"Please enter a valid email address.","Please enter a valid email address."
+"Sorry, but the administrator denied subscription for guests. Please <a href=""%1"">register</a>.","Sorry, but the administrator denied subscription for guests. Please <a href=""%1"">register</a>."
+"* Required Fields","* Required Fields"
+Email,Email
+Subscribe,Subscribe
+NewsletterPopup,NewsletterPopup
+"NewsletterPopup Configuration","NewsletterPopup Configuration"
+"NewsLetter Popup","NewsLetter Popup"
+"Popup Configuration","Popup Configuration"
+"Popup Select","Popup Select"
+"Select Popup.","Select Popup."
+"Offer Popup Configuration Information","Offer Popup Configuration Information"
+"Enable For Guest","Enable For Guest"
+"Newsletter Popup Configuration Information","Newsletter Popup Configuration Information"
+"Display Time","Display Time"
+"Popup repeat display cookie time in ""Hours"".","Popup repeat display cookie time in ""Hours""."
+"Offer URL","Offer URL"
+"Offer url to redirect on click on offer content.","Offer url to redirect on click on offer content."
+"Offer Image Upload","Offer Image Upload"
+"Allowed file types: jpg, jpeg, gif, png, svg.","Allowed file types: jpg, jpeg, gif, png, svg."

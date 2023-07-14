@@ -25,10 +25,8 @@
 
 namespace MageINIC\NewsletterPopup\Block\System\Config;
 
-use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Framework\Escaper;
 
 /**
  * Block Guest User Newsletter subscription system notice
@@ -36,42 +34,19 @@ use Magento\Framework\Escaper;
 class Guest extends Field
 {
     /**
-     * @var Escaper
-     */
-    protected Escaper $escaper;
-
-    /**
-     * Guest Constructor.
-     *
-     * @param Context $context
-     * @param Escaper $escaper
-     * @param array $data
-     */
-    public function __construct(
-        Context $context,
-        Escaper $escaper,
-        array   $data = []
-    ) {
-        $this->escaper = $escaper;
-        parent::__construct($context, $data);
-    }
-
-    /**
      * @inheritdoc
      */
     protected function _getElementHtml(AbstractElement $element): string
     {
-        $text = $this->escaper->escapeHtml('Enable Newsletter Subscription for Guest user Navigate to ');
-        $txt = $this->escaper->escapeHtml(
-            'Stores > Configuration > Customer > Newsletter > Subscription Options > Allow Guest Subscription'
-        );
+        $text = __("Enable Newsletter Subscription for Guest user Navigate to ");
+        $txt = __("Stores") . ' > ' . __("Configuration") . ' > '
+            . __("Customer") . ' > ' . __("Newsletter") . ' > '
+            . __("Subscription Options") . ' > ' . __("Allow Guest Subscription");
 
         $html = '<div class="notices-wrapper">';
         $html .= '<div class="messages">';
         $html .= '<div class="message" style="margin-top: 10px;">';
-        $html .= '<span>' . $text . '<br />';
-        $html .= '<strong>' . $txt . '</strong>';
-        $html .= '</span>';
+        $html .= '<span>' . $text . '<br /><strong>' . $txt . '</strong></span>';
         $html .= '</div>';
         $html .= '</div>';
         $html .= '</div>';

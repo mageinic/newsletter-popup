@@ -1,3 +1,5 @@
+<?xml version="1.0" ?>
+<!--
 /**
  * MageINIC
  * Copyright (C) 2023 MageINIC <support@mageinic.com>
@@ -21,31 +23,14 @@
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
+-->
 
-& when (@media-common = true) {
-    .modals-wrapper {
-        .modal-popup {
-            &.newsletter-popup {
-                .modal-inner-wrap {
-                    left: 50%;
-                    margin: 0;
-                    max-width: 700px;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-
-                    .mageinic-popup-modal {
-                        .main-popup-content {
-                            .promo-content {
-                                font-size: 25px;
-                                font-weight: bold;
-                                margin-bottom: 20px;
-                                text-align: center;
-                                text-transform: capitalize;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="MageINIC\NewsletterPopup\Api\Data\SubscriberInterface"
+                type="MageINIC\NewsletterPopup\Model\Subscriber"/>
+    <preference for="MageINIC\NewsletterPopup\Api\Data\SubscribersSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <preference for="MageINIC\NewsletterPopup\Api\SubscriberRepositoryInterface"
+                type="MageINIC\NewsletterPopup\Model\SubscriberRepository"/>
+</config>

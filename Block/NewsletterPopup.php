@@ -22,10 +22,13 @@
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
+
 namespace MageINIC\NewsletterPopup\Block;
 
 use MageINIC\NewsletterPopup\Model\DataModel as Data;
 use Magento\Backend\Block\Template\Context;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Store\Model\ScopeInterface;
 
@@ -35,30 +38,40 @@ use Magento\Store\Model\ScopeInterface;
 class NewsletterPopup extends Template
 {
     /**
-     * NewsletterPopupconfig path's
+     * NewsletterPopup-config path's
      */
-    public const XML_PATH_POP_SELECT = 'pop/offer_config/pop_select';
-    public const XML_PATH_POP_DISPLAY = 'pop/offer_config/pop_time';
-    public const XML_PATH_OFFER_URL = 'pop/offer_config/offer_url';
-    public const XML_PATH_OFFER_IMAGE = 'pop/offer_config/image_upload';
+    public const XML_PATH_POP_SELECT = 'newsletter_popup/offer_config/popup_select';
+    public const XML_PATH_POP_DISPLAY = 'newsletter_popup/offer_config/popup_time';
+    public const XML_PATH_OFFER_URL = 'newsletter_popup/offer_config/offer_url';
+    public const XML_PATH_OFFER_IMAGE = 'newsletter_popup/offer_config/image_upload';
+
+    /**
+     * NewsletterPopup-submit path
+     */
     public const SAVE_NEWSLETTER_PATH = 'newsletterpopup/index/save';
+
+    /**
+     * offer Image media path
+     */
+    public const MEDIA_PATH = 'mageINIC/newsletter/';
+    public const DEFAULT_IMAGE_PATH = 'MageINIC_NewsletterPopup::images/special-offer-banner.jpg';
 
     /**
      * @var Data
      */
-    private Data $helper;
+    private Data $dataModel;
 
     /**
      * NewsletterPopup constructor.
      *
      * @param Context $context
-     * @param Data $helper
+     * @param Data $dataModel
      */
     public function __construct(
         Context $context,
-        Data    $helper
+        Data    $dataModel
     ) {
-        $this->helper = $helper;
+        $this->dataModel = $dataModel;
         parent::__construct($context);
     }
 
@@ -88,9 +101,9 @@ class NewsletterPopup extends Template
     /**
      * Get Display Time
      *
-     * @return mixed
+     * @return string
      */
-    public function getDisplayTime(): mixed
+    public function getDisplayTime(): string
     {
         $displayTime = $this->_scopeConfig->getValue(
             self::XML_PATH_POP_DISPLAY,
@@ -132,10 +145,13 @@ class NewsletterPopup extends Template
      * Get Offer Image Url
      *
      * @return string
+     * @throws NoSuchEntityException
      */
     public function getOfferImageUrl(): string
     {
-        return $this->getBaseUrl() . 'pub/media/mageINIC/newsletter/' . $this->getOfferImage();
+        return !$this->getOfferImage() ? $this->getDefaultOfferImage()
+            : $this->_storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA)
+            . self::MEDIA_PATH . $this->getOfferImage();
     }
 
     /**
@@ -145,9 +161,7 @@ class NewsletterPopup extends Template
      */
     public function getDefaultOfferImage(): string
     {
-        return $this->getViewFileUrl(
-            'MageINIC_NewsletterPopup::images/special-offer-banner.jpg'
-        );
+        return $this->getViewFileUrl(self::DEFAULT_IMAGE_PATH);
     }
 
     /**
@@ -157,6 +171,6 @@ class NewsletterPopup extends Template
      */
     public function getUserEmail(): string
     {
-        return $this->helper->getPostValue('email') ?: $this->helper->getUserEmail();
+        return $this->dataModel->getPostValue('email') ?: $this->dataModel->getUserEmail();
     }
 }

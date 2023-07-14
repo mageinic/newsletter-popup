@@ -22,14 +22,15 @@
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
-namespace MageINIC\NewsletterPopup\Model\Adminhtml\System\Config\Source;
+
+namespace MageINIC\NewsletterPopup\Model\Adminhtml\System\Config;
 
 use Magento\Framework\Data\OptionSourceInterface;
 
 /**
- * Pop Type Config
+ * Popup Type Config options
  */
-class Config implements OptionSourceInterface
+class PopupTypes implements OptionSourceInterface
 {
     /**
      * @inheritdoc
@@ -37,9 +38,9 @@ class Config implements OptionSourceInterface
     public function toOptionArray(): array
     {
         return [
-            ['value' => 0, 'label' => __('Disable')],
-            ['value' => 1, 'label' => __('Offer Popup')],
-            ['value' => 2, 'label' => __('Newsletter Popup')]
+            ['value' => 0, 'label' => __("Disable Popup")],
+            ['value' => 1, 'label' => __("Offer Popup")],
+            ['value' => 2, 'label' => __("Newsletter Popup")]
         ];
     }
 }

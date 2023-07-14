@@ -24,13 +24,14 @@
  * @author MageINIC <support@mageinic.com>
  */
 -->
+
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <newsletter_popup>
             <offer_config>
-                <pop_select>0</pop_select>
-                <pop_time>1</pop_time>
+                <popup_select>0</popup_select>
+                <popup_time>1</popup_time>
             </offer_config>
         </newsletter_popup>
     </default>

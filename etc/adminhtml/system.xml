@@ -1,27 +1,30 @@
 <?xml version="1.0"?>
 <!--
-  ~ MageINIC
-  ~ Copyright (C) 2023. MageINIC <support@mageinic.com>
-  ~
-  ~ NOTICE OF LICENSE
-  ~
-  ~ This program is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
-  ~
-  ~ Do not edit or add to this file if you wish to upgrade this extension to newer
-  ~ version in the future.
-  ~
-  ~ @category MageINIC
-  ~ @package MageINIC_<ModuleName>
-  ~ @copyright Copyright (c) 2023. MageINIC (https://www.mageinic.com/)
-  ~ @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
-  ~ @author MageINIC <support@mageinic.com>
-  -->
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_NewsletterPopup
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+-->
+
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
@@ -30,22 +33,22 @@
             <class>separator-top</class>
             <label>NewsLetter Popup</label>
             <tab>mageinic</tab>
-            <resource>MageINIC_NewsletterPopup::newsletter_popup_config</resource>
+            <resource>MageINIC_NewsletterPopup::config</resource>
             <group id="offer_config" translate="label" type="text" sortOrder="20"
                    showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Popup Configuration</label>
-                <field id="pop_select" translate="label comment" type="select"
+                <field id="popup_select" translate="label comment" type="select"
                        sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Popup Select</label>
-                    <comment>For Popup Select</comment>
-                    <source_model>MageINIC\NewsletterPopup\Model\Adminhtml\System\Config\Source\Config</source_model>
+                    <comment>Select Popup.</comment>
+                    <source_model>MageINIC\NewsletterPopup\Model\Adminhtml\System\Config\PopupTypes</source_model>
                 </field>
                 <field id="guideline_offer" translate="label comment" type="button"
                        sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <frontend_model>MageINIC\NewsletterPopup\Block\System\Config\OfferPopInfo</frontend_model>
                     <label>Offer Popup Configuration Information</label>
                     <depends>
-                        <field id="pop_select">1</field>
+                        <field id="popup_select">1</field>
                     </depends>
                 </field>
                 <field id="guest_newsletter" translate="label" type="text"
@@ -53,38 +56,43 @@
                     <label>Enable For Guest</label>
                     <frontend_model>MageINIC\NewsletterPopup\Block\System\Config\Guest</frontend_model>
                     <depends>
-                        <field id="pop_select">2</field>
+                        <field id="popup_select">2</field>
                     </depends>
                 </field>
-                <field id="guideline_newsletter" translate="label comment" type="button"
+                <field id="guideline_newsletter" translate="label" type="button"
                        sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <frontend_model>MageINIC\NewsletterPopup\Block\System\Config\NewsletterPopupInfo</frontend_model>
-                    <label>Newsletter POPUP Configuration Information</label>
+                    <label>Newsletter Popup Configuration Information</label>
                     <depends>
-                        <field id="pop_select">2</field>
+                        <field id="popup_select">2</field>
                     </depends>
                 </field>
-                <field id="pop_time" translate="label comment" type="text"
+                <field id="popup_time" translate="label comment" type="text"
                        sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Display Time</label>
-                    <comment>Popup Repeat Display Time in Hours</comment>
+                    <comment>Popup repeat display cookie time in "Hours".</comment>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="popup_select" separator=",">1,2</field>
+                    </depends>
                 </field>
                 <field id="offer_url" translate="label comment" type="text"
                        sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Offer URL</label>
-                    <comment>Offer URL Hover on offer popup Content</comment>
+                    <comment>Offer url to redirect on click on offer content.</comment>
                     <depends>
-                        <field id="pop_select">1</field>
+                        <field id="popup_select">1</field>
                     </depends>
+                    <validate>validate-url</validate>
                 </field>
-                <field id="image_upload" translate="label" type="image"
+                <field id="image_upload" translate="label comment" type="image"
                        sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Offer Image Upload</label>
                     <backend_model>MageINIC\NewsletterPopup\Block\System\Config\OfferImage</backend_model>
                     <base_url type="media" scope_info="1">mageINIC/newsletter</base_url>
-                    <comment><![CDATA[Allowed file types: jpg, jpeg, gif, png, svg]]></comment>
+                    <comment>Allowed file types: jpg, jpeg, gif, png, svg.</comment>
                     <depends>
-                        <field id="pop_select">1</field>
+                        <field id="popup_select">1</field>
                     </depends>
                 </field>
             </group>

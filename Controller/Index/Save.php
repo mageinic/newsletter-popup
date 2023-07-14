@@ -22,6 +22,7 @@
  * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
  * @author MageINIC <support@mageinic.com>
  */
+
 namespace MageINIC\NewsletterPopup\Controller\Index;
 
 use Exception;
@@ -92,7 +93,7 @@ class Save extends Action implements HttpPostActionInterface
     /**
      * @var Session
      */
-    private Session $_customerSession;
+    private Session $customerSession;
 
     /**
      * @var ScopeConfig
@@ -100,14 +101,14 @@ class Save extends Action implements HttpPostActionInterface
     private ScopeConfig $scopeConfig;
 
     /**
-     * @var Url
-     */
-    private Url $url;
-
-    /**
      * @var EmailValidator
      */
     private EmailValidator $emailValidator;
+
+    /**
+     * @var Url
+     */
+    private Url $url;
 
     /**
      * Save Constructor
@@ -148,11 +149,11 @@ class Save extends Action implements HttpPostActionInterface
         $this->messageManager = $messageManager;
         $this->resultJsonFactory = $resultJsonFactory;
         $this->inlineParser = $inlineParser;
-        $this->request = $request;
-        $this->_customerSession = $customerSession;
+        $this->customerSession = $customerSession;
         $this->scopeConfig = $scopeConfig;
-        $this->url = $url;
+        $this->request = $request;
         $this->emailValidator = $emailValidator;
+        $this->url = $url;
         parent::__construct($context);
     }
 
@@ -172,12 +173,12 @@ class Save extends Action implements HttpPostActionInterface
                     $response = $this->newsLetterSubscribe($email);
                     $this->_actionFlag->set('', self::FLAG_NO_POST_DISPATCH, true);
                 } else {
-                    $this->messageManager->addErrorMessage(__("This email address is already subscribed."));
-                    $response = ['error' => 'true'];
+                    $response['message'] = __("This email address is already subscribed.");
+                    $response['success'] = false;
                 }
             } else {
-                $this->messageManager->addErrorMessage(__("Please enter a valid email address."));
-                $response = ['error' => 'true'];
+                $response['message'] = __("Please enter a valid email address (Ex: johndoe@domain.com).");
+                $response['success'] = false;
             }
             return $resultJson->setData($response);
         }
@@ -193,7 +194,7 @@ class Save extends Action implements HttpPostActionInterface
         return ($this->scopeConfig->getValue(
             Subscriber::XML_PATH_ALLOW_GUEST_SUBSCRIBE_FLAG,
             ScopeInterface::SCOPE_STORE
-        ) != 1 && !$this->_customerSession->isLoggedIn());
+        ) != 1 && !$this->customerSession->isLoggedIn());
     }
 
     /**
@@ -216,7 +217,7 @@ class Save extends Action implements HttpPostActionInterface
                 $this->subscriber->setStoreId($currentStoreId);
                 $this->subscriber->setSubscriberStatus('1');
                 $this->subscriber->save();
-                $this->messageManager->addSuccessMessage(__('Thank you for your subscription.'));
+                $this->messageManager->addSuccessMessage(__("Thank you for your subscription."));
                 $this->subscriber->sendConfirmationSuccessEmail();
             } elseif ($this->guestUserSubscription() != '') {
                 $this->messageManager->addComplexErrorMessage(
@@ -226,10 +227,10 @@ class Save extends Action implements HttpPostActionInterface
             } else {
                 $model = $this->subscriberFactory->create();
                 $model->subscribe($email);
-                $this->messageManager->addSuccessMessage(__('Thank you for your subscription.'));
+                $this->messageManager->addSuccessMessage(__("Thank you for your subscription."));
             }
             $this->inlineParser->processAjaxPost([$email]);
-            $response = ['success' => 'true'];
+            $response = ['success' => true];
         } catch (Exception $e) {
             $this->messageManager->addErrorMessage(__($e->getMessage()));
             $response = ['error' => $e->getMessage()];

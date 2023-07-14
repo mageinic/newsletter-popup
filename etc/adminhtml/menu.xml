@@ -24,21 +24,24 @@
  * @author MageINIC <support@mageinic.com>
  */
 -->
+
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="MageINIC_NewsletterPopup::newsletter_popup"
              title="Newsletter Popup"
              module="MageINIC_NewsletterPopup"
+             translate="title"
              sortOrder="30"
              resource="MageINIC_NewsletterPopup::newsletter_popup"
              parent="MageINIC_Core::core"/>
-        <add id="MageINIC_NewsletterPopup::configuration"
+        <add id="MageINIC_NewsletterPopup::config"
              title="Configuration"
              module="MageINIC_NewsletterPopup"
+             translate="title"
              sortOrder="20"
              parent="MageINIC_NewsletterPopup::newsletter_popup"
              action="admin/system_config/edit/section/newsletter_popup"
-             resource="MageINIC_NewsletterPopup::configuration"/>
+             resource="MageINIC_NewsletterPopup::config"/>
     </menu>
 </config>

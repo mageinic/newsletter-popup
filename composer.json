@@ -1,16 +1,18 @@
 {
     "name": "mageinic/newsletter-popup",
-    "description": "Newsletter Popup Extension for Magento 2 Capture visitor emails with an attractive popup. Customize design, and integration with email service providers. Mobile responsive, GDPR compliant, and easy to configure.",
+    "description": "Newsletter Popup by MageINIC Team, This extension enables customizable popups for newsletter subscriptions and attractive offers. It provides easy configuration and control over display timing",
     "require": {
         "php": "^8.0",
-        "mageinic/core": ">=1.0.0",
-        "magento/module-newsletter" : "^100.4.6"
+        "mageinic/core": "1.0.*",
+        "magento/module-newsletter" : "100.4.*",
+        "magento/module-cms" : "104.0.*"
     },
-    "version": "1.0.0",
     "type": "magento2-module",
-    "keywords": ["mageinic", "Newsletter Popup", "Newsletter", "magento 2"],
-    "homepage": "https://github.com/mageinic",
-    "license": "MIT",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
     "authors": [
         {
             "name": "MageINIC",
