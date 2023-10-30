@@ -41,7 +41,7 @@
              translate="title"
              sortOrder="20"
              parent="MageINIC_NewsletterPopup::newsletter_popup"
-             action="admin/system_config/edit/section/newsletter_popup"
+             action="adminhtml/system_config/edit/section/newsletter_popup"
              resource="MageINIC_NewsletterPopup::config"/>
     </menu>
 </config>

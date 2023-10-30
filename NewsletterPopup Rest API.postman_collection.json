@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "4a94faa7-1422-473b-ba25-b269f9475cbc",
+		"name": "NewsletterPopup Rest API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Subscribe Newsletter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"subscriber\": {\n    \"store_id\": 1,\n    \"subscriber_email\": \"nilay@mageinic.com\",\n    \"subscriber_status\": 1\n  }\n}"
+				},
+				"url": {
+					"raw": "{{magento_api_url}}/V1/subscriber",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"subscriber"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription Confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"confirmationCode\": \"aqkvk4x2bsngbj9xxwek6efwiwrulrjc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{magento_api_url}}/V1/subscriber/9/confirm",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"subscriber",
+						"9",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsubscribe Newsletter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"confirmationCode\": \"aqkvk4x2bsngbj9xxwek6efwiwrulrjc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{magento_api_url}}/V1/subscriber/9/unsubscribe",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"subscriber",
+						"9",
+						"unsubscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Subscriber List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjEsInV0eXBpZCI6MiwiaWF0IjoxNjg5MjM2NTMzLCJleHAiOjE2ODkyNDAxMzN9.TJx4QoGt8n9HQF5EqjuNXM1pGvezFVrd2wScdCAL1UE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{magento_api_url}}/V1/subscribers?searchCriteria%5BfilterGroups%5D%5B0%5D%5Bfilters%5D%5B0%5D%5Bfield%5D=subscriber_status&searchCriteria%5BfilterGroups%5D%5B0%5D%5Bfilters%5D%5B0%5D%5Bvalue%5D=1",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"subscribers"
+					],
+					"query": [
+						{
+							"key": "searchCriteria%5BfilterGroups%5D%5B0%5D%5Bfilters%5D%5B0%5D%5Bfield%5D",
+							"value": "subscriber_status"
+						},
+						{
+							"key": "searchCriteria%5BfilterGroups%5D%5B0%5D%5Bfilters%5D%5B0%5D%5Bvalue%5D",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjEsInV0eXBpZCI6MiwiaWF0IjoxNjg5MjM2NTMzLCJleHAiOjE2ODkyNDAxMzN9.TJx4QoGt8n9HQF5EqjuNXM1pGvezFVrd2wScdCAL1UE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
